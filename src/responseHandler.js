@@ -1,8 +1,8 @@
-const getErrorStatus = require("./errorData");
+const getErrorStatus = require('./errorData');
 function findErrorMessage(status) {
     return (
         getErrorStatus.ERROR_STATUS_ARRAY.find((v) => v.status == status) || {
-            error: "There must be an error",
+            error: 'Error.',
         }
     );
 }

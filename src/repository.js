@@ -1,12 +1,11 @@
 const { resolve } = require('path');
 const db = require('./server');
 
-dashboard = async () => {
+allEmployees = async () => {
   var sql = `SELECT * FROM employee`;
   return new Promise(function (resolve, reject) {
     db.query(sql, function (err, result) {
       if (err) {
-        resolve(false);
         throw err;
       }
       else {
@@ -28,6 +27,6 @@ specificEmployee = async (id) => {
 
 
 module.exports = {
-  dashboard,
+  allEmployees,
   specificEmployee
 };
