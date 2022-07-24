@@ -31,7 +31,26 @@ const app = express();
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-app.use('/', require('./src/routes/studentsRoute'));
+app.use('/', require('./src/employeeRoute'));
+
+app.response.sendStatus = function (jsonResponse) {
+  return this.contentType('application/json')
+    .status(jsonResponse.status)
+    .send(jsonResponse)
+}
+
+app.response.success = function (message) {
+  return this
+    .status(200)
+    .send(message)
+}
+
+app.response.notFound = function (responseObject) {
+  return this
+    .status(404)
+    .send(responseObject)
+}
+
 
 const PORT = process.env.PORT || 5000;
 try {
